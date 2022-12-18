@@ -25,15 +25,18 @@ class Game(Board,Menu):
                 continue
             
             if len(coords) > 1:
-                if int(coords[1]) not in range(3):
+                try:
+                    if int(coords[1]) not in range(1,4):
+                        print('Out of bounds!')
+                        coords = []
+                        continue
+                except ValueError:
                     print('Out of bounds!')
                     coords = []
                     continue
-                
             if len(coords) == 2:
                 
-                coords = self.translate_coords(coords)
-                print(coords)          
+                coords = self.translate_coords(coords)         
                 if self.is_occupied(self.board,coords):
                     print('This place is occupied, try other one')
                     coords = []
@@ -46,7 +49,6 @@ class Game(Board,Menu):
         
         coords = self.get_empty_coords(self.board)
         ai_choice = random.choice(coords)
-        
         return ai_choice
         
         # Room for improvement... i had to copy/paste same function cuz i couldn't make static value...

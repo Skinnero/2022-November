@@ -51,12 +51,12 @@ class Menu:
                 else:
                     print("I don't know what u mean by that...")
         
+        return 'O'
+    
         # Swap a player to another 
     def swap_player(self,player):
         
         if player == 'X':
-            print('Player "O" is moving')
             return 'O'
         else:
-            print('Player "X" is moving')
             return 'X' 

@@ -18,13 +18,12 @@ class Board:
             for row in range(3):
                 if board[col][row] == ' ':
                     return True
-  
         return False
     
         # Marks the specified spot chosen by a player, returns marked board
     def mark_the_coord(self,board,coordinates,player):
         row,col = coordinates
-        board[row][col-1] = player
+        board[row][col] = player
         return board
     
         # Terminal case, returns value and True if terminal case otherwise None,False
@@ -66,17 +65,18 @@ class Board:
 
         # Displays board
     def display_board(self,board):
-        print('        1   2   3 ')
-        print(f'\n    A   {board[0][0]} | {board[0][1]} | {board[0][2]}')
-        print('       ---+---+---')
-        print(f'    B   {board[1][0]} | {board[1][1]} | {board[1][2]}')
-        print('       ---+---+---')
-        print(f'    C   {board[2][0]} | {board[2][1]} | {board[2][2]}\n')
+        
+        print('\n         1   2   3 ')
+        print(f'\n     A   {board[0][0]} | {board[0][1]} | {board[0][2]}')
+        print('        ---+---+---')
+        print(f'     B   {board[1][0]} | {board[1][1]} | {board[1][2]}')
+        print('        ---+---+---')
+        print(f'     C   {board[2][0]} | {board[2][1]} | {board[2][2]}\n')
         
         # Checks if spot is occupied, return True if not occupied
     def is_occupied(self, board, coordinates):
         x,y = coordinates
-        if board[x][y-1] == ' ':
+        if board[x][y] == ' ':
             return False
         else:
             return True
@@ -101,7 +101,7 @@ class Board:
         elif coords[0].upper() == 'C':
             coords[0] = 2
         
-        coords[1] = int(coords[1])    
+        coords[1] = int(coords[1]) -1    
         
         return coords
         
